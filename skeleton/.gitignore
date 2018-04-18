@@ -1,0 +1,9 @@
+omr
+output
+*.sqlite3*
+*.csv
+*.pdf
+*.tif
+email/sent
+email/queue
+card/stamped/latex_output

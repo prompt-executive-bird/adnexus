@@ -1,0 +1,152 @@
+\documentclass[
+  12pt,
+  english,
+  %
+  % And the following adds a per sheet barcode at the bottom left; the 'stamp'
+  % module must be run to produce them.
+  print_questionnaire_id,
+  %
+  % You can choose between twoside and oneside. twoside is the default, and
+  % requires the document to be printed and scanned in duplex mode.
+  oneside,
+  %
+  % With SDAPS 1.1.6 and newer you can choose the mode used when recognizing
+  % checkboxes. valid modes are "checkcorrect" (default), "check" and
+  % "fill".
+  checkmode=fill,
+  %
+  % The following options make sense so that we can get a better feel for the
+  % final look.
+  style=qr,
+  nostamp]{sdapsclassic}
+\usepackage[utf8]{inputenc}
+\usepackage[a6paper, vmargin=12mm, hmargin=12mm]{geometry}
+\usepackage{multicol}
+\usepackage{wallpaper}
+
+% Add border to the card
+%
+% The path to the border must be specified as an absolute path as SDAPS will try
+% to move it around, breaking the path.
+%
+% NB!   This must be set before attempting SDAPS setup.
+%
+\newcommand{\borderimagepath}{}
+\CenterWallPaper{1}{\borderimagepath}
+
+% Set paragraph vspace to a sensibly tight value
+\setlength{\parskip}{4pt plus 0.5pt minus 1pt}
+
+% Specifies the textbox height for written data
+\newlength{\mytextboxheight}
+\setlength{\mytextboxheight}{1.4cm}
+
+% Change the default font family to sans serif
+\renewcommand{\familydefault}{\sfdefault}
+
+\renewcommand\thesection{}
+\renewcommand\thesubsection{}
+\renewcommand\thesubsubsection{}
+
+% Provides a less-distracting aside
+\newcommand\clarifyingnote[1]{\small\textcolor{gray}{\textit{#1}}}
+
+\title{}
+
+\begin{document}
+  \begin{questionnaire}[noinfo]
+    %
+    % This section provides some metadata to SDAPS. It should be filled in
+    % before starting.
+    %
+    \addinfo{Date}{}
+    \addinfo{Location}{}
+    \addinfo{Participants}{}
+    \addinfo{Identifier}{}
+
+    \section{Identification Number}
+      \begin{choicegroup}{}
+        \groupaddchoice{0}
+        \groupaddchoice{1}
+        \groupaddchoice{2}
+        \groupaddchoice{3}
+        \groupaddchoice{4}
+        \groupaddchoice{5}
+        \groupaddchoice{6}
+        \groupaddchoice{7}
+        \groupaddchoice{8}
+        \groupaddchoice{9}
+
+        \choiceline{\kern-0.9em{$\mathsf{\times 10}$}}
+        \choiceline{\kern-0.9em{$\mathsf{\times 1}$}}
+      \end{choicegroup}
+
+    \section{Contact Information}
+      \textbox*{\mytextboxheight}{Name \& Last Initial}
+      \textbox*{\mytextboxheight}{Pronouns}
+      \textbox*{\mytextboxheight}{Email Address}
+
+    \newpage
+    \section{Matching Information}
+      \begin{multicols}{3}
+        \begin{choicegroup}{}
+          \groupaddchoice{Y}
+          \groupaddchoice{N}
+
+          \choiceline{1}
+          \choiceline{2}
+          \choiceline{3}
+          \choiceline{4}
+          \choiceline{5}
+          \choiceline{6}
+          \choiceline{7}
+          \choiceline{8}
+          \choiceline{9}
+          \choiceline{10}
+          \choiceline{11}
+          \choiceline{12}
+          \choiceline{13}
+          \choiceline{14}
+          \choiceline{15}
+          \choiceline{16}
+          \choiceline{17}
+          \choiceline{18}
+          \choiceline{19}
+          \choiceline{20}
+          \choiceline{21}
+          \choiceline{22}
+          \choiceline{23}
+          \choiceline{24}
+          \choiceline{25}
+          \choiceline{26}
+          \choiceline{27}
+          \choiceline{28}
+          \choiceline{29}
+          \choiceline{30}
+          \choiceline{31}
+          \choiceline{32}
+          \choiceline{33}
+          \choiceline{34}
+          \choiceline{35}
+          \choiceline{36}
+          \choiceline{37}
+          \choiceline{38}
+          \choiceline{39}
+          \choiceline{40}
+          \choiceline{41}
+          \choiceline{42}
+          \choiceline{43}
+          \choiceline{44}
+          \choiceline{45}
+          \choiceline{46}
+          \choiceline{47}
+          \choiceline{48}
+          \choiceline{49}
+          \choiceline{50}
+          \choiceline{51}
+        \end{choicegroup}
+      \end{multicols}
+
+  \end{questionnaire}
+\end{document}
+
