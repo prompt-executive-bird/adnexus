@@ -2,7 +2,7 @@ SHELL = /bin/bash
 
 SESSION = ""
 DATABASE = "matching/matching.sqlite3"
-SDAPS = "../../sdaps/sdaps.py"
+SDAPS = "../sdaps/sdaps.py"
 
 MAILER = mail
 RETURN_ADDRESS = ""
@@ -10,7 +10,7 @@ EMAIL_SUBJECT = "Speed-Meeting Matches"
 
 # FIXME: This number is hard-coded; changes to card/stamped/ proper_
 # pagination.tex are required. See that source file for more information.
-NUMBER_CARDS = "32"
+NUMBER_CARDS =
 
 ##
 ## Default target

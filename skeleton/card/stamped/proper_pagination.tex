@@ -1,60 +1,51 @@
-\documentclass{article}
+\documentclass[landscape]{article}
 \usepackage{pdfpages}
+
+%
+% Condenses stamped.pdf by adding several of the sourced pages into a single
+% page. This document assumes A6-size cards should be placed on US Letter paper.
+% The maximum number of cards per sheet in this arrangement is 2. The page must
+% be in landscape mode to accommodate this set up.
+%
+% Pages are listed in sets of 4, the odd pages being listed before the
+% even pages in each set.
+%
 
 \pagestyle{empty}
 
 \begin{document}
-  % Condenses stamped.pdf by adding several of the sourced pages into a single
-  % page. Pages are listed in sets of 8, the odd pages being listed before the
-  % even pages in each set.
-  %
-  %
+
   % %% Calculation of delta(x,y)
   %
-  % The placement values below assume the following printer margins:
-  %     - Top:     6.5mm          - Left:  6.5mm
-  %     - Bottom: 14.5mm          - Right: 6.5mm
-  % The horizontal gutter between cards (i.e., the first component of the delta
-  % option) was chosen to be 8mm. Thus, the scaling factor g and vertical gutter
-  % v are:
-  %     g = (w0 - (l + r + h) ) / 2w,
-  %     v = phi(l + r + h) - (t + b);
-  % where w0,w    are the width of the printing paper and unscaled card width;
-  %       t,b,l,r are the top, bottom, left, and right margins, respectively;
-  %       phi     is the aspect ratio of both the printing paper and cards
-  %               (FIXME: Remove dependence on having the same aspect ratio.);
-  %       h = 8mm is the horizontal gutter.
-  % The value for the scaling factor g is used in the 'scale' option, and the
-  % vertical gutter v is the horizontal component of 'delta'.
+  % The delta values are the distances between each page in the block. As they
+  % are not stacked vertically, delta(y) = 0. If delta(x) is operationally
+  % defined to be the same as the horizontal margins, we have:
+  %     L = 2w + 3delta(x);
+  % where L is the long edge length of US Letter, and
+  %       w is the short edge length of A6.
+  % Or, equivalently,
+  %     delta(x) = (1/3) * (L - 2w).
+  % Noting that (L, W) = (11in, 8.5in) = (279.4mm, 215.9mm), and
+  %             (l, w) = (148mm, 105mm),
+  % we obtain
+  %     delta(x) = 23.13mm.
+  % Hence, delta(x,y) = (23.13mm, 0mm).
   %
-  %
+
   % %% Calculation of offset(x,y)
   %
   % When the block of pages is typeset, it is centered in the page. Unless the
-  % margins are uniform with respect to the page ratio, it will need to be
-  % shifted with 'offset'.
+  % margins need to be changed due to a restricted, non-centred printing area,
+  % we can use offset(x,y)=(0mm, 0mm).
   %
-  % As the left and right margins are the same, this stays as 0mm. The vertical
-  % offset can be obtained simply by determining where "centre" is, and how far
-  % away the top margin is (TODO: Provide equations for this).
-  %
-  %
-  % XXX: I have changed the below values to suit my immediate needs; they likely
-  % still solve the above equations, but I didn't use them presently.
 
   % FIXME: Requires a hard-coded specification of the page numbers. (To resolve
   % this, consider the following command:
   %     pdfinfo example.pdf | grep Pages | sed 's/[^0-9]*//'
   % This outputs the number of pages in a pdf document.)
-  \includepdf[nup=2x2, pages={ 1,  3,  5,  7, %
-                               4,  2,  8,  6, %
-                               9, 11, 13, 15, %
-                              12, 10, 16, 14, %
-                              17, 19, 21, 23, %
-                              20, 18, 24, 22, %
-                              25, 27, 29, 31, %
-                              28, 26, 32, 30},%
-              offset=0mm 0mm, delta=4.434mm 5.738mm,%
-              noautoscale, scale=0.886826618]{stamped.pdf}
+  \includepdf[nup=2x1,%
+              pages={},%
+              offset=0mm 0mm, delta=23.13mm 0mm,%
+              noautoscale, scale=1]{stamped.pdf}
 \end{document}
 
